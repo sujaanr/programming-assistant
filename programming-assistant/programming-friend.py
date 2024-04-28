@@ -13,9 +13,9 @@ class ProgrammingAssistant:
     def __init__(self, model: str = "codellama", verbose: bool = False) -> None:
         logging.info("Initializing the Programming Assistant with model %s.", model)
         self.verbose = verbose
-        self.system_prompt = ("You are a pair programming tool to help developers "
-                              "debug, think through design, and write code. "
-                              "Help the user think through their approach and provide feedback on the code.")
+        self.system_prompt = ("You are an AI programming assistant designed to help developers "
+                              "debug, design, and write code efficiently. Provide guidance, "
+                              "feedback, and suggestions as needed.")
         self.llm = Ollama(model=model, callbacks=[StreamingStdOutCallbackHandler()], system=self.system_prompt)
 
     def call_llama(self, code: str = "", prompt: Optional[str] = None, chain: bool = False) -> None:
